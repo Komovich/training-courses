@@ -1,38 +1,120 @@
-.App {
+.wrappper{
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.header {
+  height: 210px;
+  margin-bottom: 30px;
+  background-image: url(./assets/image/shalom.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.header__title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.courses{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  margin-bottom: 30px;
+}
+
+.courses__item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.content__title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.item__image {
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.item__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.content__description {
+  margin-bottom: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.content__buttons {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons__button {
+  margin-right: 1rem;
+}
+
+.buttons__button_learn-more {
+  color: #fff;
+  background-color: #3f51b5;
+  &:hover {
+    background-color: #2c3e50;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+.pagination{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+ul.pagination__inner {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+ul.pagination__inner li {
+  display: inline;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+ul.pagination__inner li.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+ul.pagination__inner li:hover:not(.active) {
+  background-color: #ddd;
 }
