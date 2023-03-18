@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import {
   AppBar,
   Typography,
-  Button,
-  Badge,
-  Rating,
-  Chip,
   Toolbar,
 } from "@mui/material";
 import Pagination from "./Pagination";
-import Lesson from "./Lesson";
 import Api from "../api";
+import CourseCard from "./CourseCard"
 
 function Courses() {
   const [data, setData] = useState([]); // данные из сервера
@@ -58,101 +50,21 @@ function Courses() {
           component="div"
           className="content__title"
           sx={{
-            margin: "30px",
+            marginBottom: "30px",
           }}
         >
           Regular online courses
         </Typography>
 
-        <div className="courses">
-          {renderedData.map((course) => (
-            <Card
-              className="courses__item"
-              key={course.id}
-              sx={{
-                maxWidth: 345,
-              }}
-            >
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="div"
-                className="content__title"
-              >
-                {course.title}
-              </Typography>
+        <CourseCard renderedData={renderedData}/>
 
-              <CardMedia
-                className="item__image"
-                sx={{ height: "170px" }}
-                image={course.previewImageLink + "/cover.webp"}
-                title={course.title}
-              />
-              <CardContent className="item__content">
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  className="content__description"
-                  sx={{
-                    fontSize: "20px",
-                    paddingBottom: "25px",
-                    borderBottom: "1px solid #000",
-                    maxWidth: "100vw",
-                  }}
-                >
-                  {course.description}
-                </Typography>
-
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{
-                    fontSize: "20px",
-                    margin: "20px",
-                  }}
-                >
-                  Learning Outcomes:
-                  {course.meta.skills?.map((skill, i) => (
-                    <Chip
-                      key={i}
-                      label={skill}
-                      sx={{
-                        fontSize: "20px",
-                        backgroundColor: "blue",
-                        color: "white",
-                        fontSize: "16px",
-                        fontWeight: "bold",
-                        margin: "5px",
-                      }}
-                    />
-                  ))}
-                </Typography>
-
-                <CardActions
-                  sx={{ borderTop: "1px solid #000", maxWidth: "100vw" }}
-                >
-                  <Badge
-                    color="primary"
-                    sx={{ fontSize: "20px", marginRight: "100px" }}
-                  >
-                    Lessons: {course.lessonsCount}
-                  </Badge>
-                  <Rating
-                    value={course.rating}
-                    readOnly
-                    sx={{ marginLeft: "50px" }}
-                  />
-                </CardActions>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-      <Pagination
+        <Pagination
         totalCard={data.length}
         itemsPerPage={itemsPerPage}
         paginate={paginate}
       />
+      </div>
+
       <AppBar
         color="primary"
         sx={{ bottom: 0, top: "auto", position: "relative" }}
