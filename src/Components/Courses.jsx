@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  AppBar,
-  Typography,
-  Toolbar,
-} from "@mui/material";
+import { AppBar, Typography, Toolbar } from "@mui/material";
 import Pagination from "./Pagination";
 import Api from "../api";
-import CourseCard from "./CourseCard"
+import CourseCard from "./CourseCard";
+import Video from "./Video";
 
 function Courses() {
   const [data, setData] = useState([]); // данные из сервера
@@ -56,13 +53,17 @@ function Courses() {
           Regular online courses
         </Typography>
 
-        <CourseCard renderedData={renderedData}/>
+        <div className="courses">
+          {renderedData.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
 
         <Pagination
-        totalCard={data.length}
-        itemsPerPage={itemsPerPage}
-        paginate={paginate}
-      />
+          totalCard={data.length}
+          itemsPerPage={itemsPerPage}
+          paginate={paginate}
+        />
       </div>
 
       <AppBar

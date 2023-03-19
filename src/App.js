@@ -1,19 +1,23 @@
 import React from "react";
-import "./App.css"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Courses from "./Components/Courses";
 import Lesson from "./Components/Lesson";
 
 function App() {
-  return (
-    <Router>
-        <Courses />
-        <Routes>
-          <Route exact path="/" component={Courses} />
-          <Route path="/lesson/:id" component={Lesson} />
-        </Routes>
-    </Router>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Courses />,
+    },
+    {
+      path: "/lesson/:id",
+      element: <Lesson />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
