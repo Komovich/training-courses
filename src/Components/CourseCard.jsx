@@ -49,11 +49,6 @@ function CourseCard({ course }) {
           >
             {course.title}
           </Typography>
-          {/* <Box>
-          <div sx={{ height: "200px" }} className="video-container">
-            <Video video={course.meta.courseVideoPreview} />
-          </div>
-        </Box> */}
           <Box
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}

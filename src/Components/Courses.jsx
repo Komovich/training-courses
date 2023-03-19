@@ -68,7 +68,7 @@ function Courses() {
 
       <AppBar
         color="primary"
-        sx={{ bottom: 0, top: "auto", position: "relative" }}
+        sx={{ bottom: 0, top: "auto", position: "absolute" }}
       >
         <Toolbar>
           <Typography variant="body1" color="inherit">

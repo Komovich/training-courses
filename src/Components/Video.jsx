@@ -26,8 +26,7 @@ function Video({ video, poster }) {
 
   const videoStyle = {
     width: "100%",
-    height: "100%",
-    maxWidth: "800px", // максимальная ширина видео
+    height: "100%", // максимальная ширина видео
     margin: "0 auto",
     position: "absolute",
     inset: 0,
@@ -47,15 +46,13 @@ function Video({ video, poster }) {
   }, []);
 
   return (
-    <div data-vjs-player>
-      <video
-        playsInline
-        ref={videoNode}
-        poster={poster}
-        className="video-js"
-        style={videoStyle}
-      ></video>
-    </div>
+    <video
+      playsInline
+      ref={videoNode}
+      poster={poster}
+      className="video-js"
+      style={videoStyle}
+    ></video>
   );
 }
 

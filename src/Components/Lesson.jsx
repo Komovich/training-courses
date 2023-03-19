@@ -1,7 +1,18 @@
 import React from "react";
+import { AppBar, Toolbar, Typography, Box, Chip } from "@mui/material";
 
-function Lesson() {
+function Lesson({course}) {
+console.log(course, 12);
+  return (
+    <div>
+     {course.lessons.map((item) => (
+        <Box>
+         {item.title}
+        </Box>
+     ))}
+     
+    </div>
+  )
 
-    return null
 }
-export default Lesson
+export default Lesson;

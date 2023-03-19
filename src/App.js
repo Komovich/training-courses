@@ -3,7 +3,7 @@ import "./App.css";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Courses from "./Components/Courses";
-import Lesson from "./Components/Lesson";
+import Course from "./Components/Course";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,7 +13,7 @@ function App() {
     },
     {
       path: "/lesson/:id",
-      element: <Lesson />,
+      element: <Course />,
     },
   ]);
 
