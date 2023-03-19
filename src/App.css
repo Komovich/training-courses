@@ -1,4 +1,4 @@
-.wrappper{
+.wrappper {
   min-height: 100vh;
   padding-bottom: 50px;
 }
@@ -22,7 +22,7 @@
   padding: 0 10px;
 }
 
-.courses{
+.courses {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -66,12 +66,13 @@
 .buttons__button_learn-more {
   color: #fff;
   background-color: #3f51b5;
-  &:hover {
-    background-color: #2c3e50;
-  }
 }
 
-.pagination{
+.buttons__button_learn-more:hover {
+  background-color: #2c3e50;
+}
+
+.pagination {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,4 +108,12 @@ ul.pagination__inner li:hover:not(.active) {
 
 a {
   text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }

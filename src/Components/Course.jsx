@@ -110,7 +110,7 @@ function Course() {
         </Box>
         <Grid container spacing={2}>
           {course.lessons.map((lesson) => (
-            <Grid item xs={4} key={lesson.id}>
+            <Grid item xs={6} md={4} key={lesson.id}>
               <Lesson lesson={lesson} />
             </Grid>
           ))}

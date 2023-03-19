@@ -3,18 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
-function Video({ video, poster }) {
+function Video({ video, poster, context = "default" }) {
   const { link } = video;
   const videoNode = useRef(null);
   const [player, setPlayer] = useState(null);
 
+  const isLesson = context === "lesson";
+
   const options = {
     fill: true,
     fluid: false,
-    autoplay: true,
-    muted: true,
-    controls: false,
-    playsInline: true,
+    autoplay: isLesson ? false : true,
+    muted: isLesson ? false : true,
+    controls: isLesson ? true : false,
+    playsInline: isLesson ? false : true,
     preload: "metadata",
     sources: [
       {
