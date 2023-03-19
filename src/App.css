@@ -104,3 +104,7 @@ ul.pagination__inner li.active {
 ul.pagination__inner li:hover:not(.active) {
   background-color: #ddd;
 }
+
+a {
+  text-decoration: none;
+}

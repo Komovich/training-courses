@@ -38,6 +38,7 @@ function Video({ video, poster }) {
       setPlayer(_player);
 
       return () => {
+        console.log("clean up");
         if (player !== null) {
           player.dispose();
         }
@@ -46,13 +47,15 @@ function Video({ video, poster }) {
   }, []);
 
   return (
-    <video
-      playsInline
-      ref={videoNode}
-      poster={poster}
-      className="video-js"
-      style={videoStyle}
-    ></video>
+    <div>
+      <video
+        playsInline
+        ref={videoNode}
+        poster={poster}
+        className="video-js"
+        style={videoStyle}
+      ></video>
+    </div>
   );
 }
 

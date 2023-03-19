@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function Pagination({ itemsPerPage, totalCard, paginate }) {
   const pageNumbers = [];
@@ -12,9 +12,7 @@ function Pagination({ itemsPerPage, totalCard, paginate }) {
       <ul className="pagination__inner">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a href="!#" onClick={() => paginate(number)}>
-              {number}
-            </a>
+            <button onClick={() => paginate(number)}>{number}</button>
           </li>
         ))}
       </ul>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Typography, Box, Chip } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Chip, Grid } from "@mui/material";
 import Video from "./Video";
 import Api from "../api";
 import { useParams } from "react-router";
-import Lesson from "./Lesson"
+import Lesson from "./Lesson";
 
 function Course() {
   const [course, setCourse] = useState(null);
@@ -58,10 +58,6 @@ function Course() {
           />
         </Box>
       </Box>
-    
-      <Box>
-        <Lesson course={course}/>
-      </Box>
 
       <Box
         sx={{
@@ -82,10 +78,10 @@ function Course() {
           {course.title}
         </Typography>
 
-        {course.meta.skills?.map((tag, i) => (
+        {course.meta.skills?.map((skill, i) => (
           <Chip
             key={i}
-            label={tag}
+            label={skill}
             sx={{
               backgroundColor: "#3483eb",
               color: "white",
@@ -101,12 +97,25 @@ function Course() {
           variant="h6"
           component="div"
           className="content__title"
-          sx={{ marginBottom: "1rem", marginBottom: "50px"}}
+          sx={{ marginBottom: "1rem", marginBottom: "50px" }}
         >
           {course.description}
         </Typography>
       </Box>
-
+      <div className="container">
+        <Box mb={2}>
+          <Typography variant="body2" color="text.secondary">
+            Все уроки:
+          </Typography>
+        </Box>
+        <Grid container spacing={2}>
+          {course.lessons.map((lesson) => (
+            <Grid item xs={4} key={lesson.id}>
+              <Lesson lesson={lesson} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
       <AppBar
         color="primary"
         sx={{ top: "auto", bottom: 0, position: "fixed", width: "100%" }}

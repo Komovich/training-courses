@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Typography, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Typography,
+  Toolbar,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import Pagination from "./Pagination";
 import Api from "../api";
 import CourseCard from "./CourseCard";
 import Video from "./Video";
 
 function Courses() {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]); // данные из сервера
   const [currentPage, setCurrentPage] = useState(1); //страница по умолчанию
   const [itemsPerPage] = useState(10); //кол-во елементов на странице
 
   async function getData() {
     try {
+      setLoading(true);
       const data = await Api.getData();
       setData(data.courses);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -31,6 +41,22 @@ function Courses() {
     setCurrentPage(pageNumbers);
   };
 
+  const list = (
+    <div className="courses">
+      {renderedData.map((course) => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  );
+
+  const pagination = (
+    <Pagination
+      totalCard={data.length}
+      itemsPerPage={itemsPerPage}
+      paginate={paginate}
+    />
+  );
+
   return (
     <div className="wrapper">
       <AppBar
@@ -38,8 +64,7 @@ function Courses() {
         position="static"
         color="primary"
         elevation={4}
-      ></AppBar>
-
+      />
       <div className="container">
         <Typography
           gutterBottom
@@ -52,23 +77,20 @@ function Courses() {
         >
           Regular online courses
         </Typography>
-
-        <div className="courses">
-          {renderedData.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
-
-        <Pagination
-          totalCard={data.length}
-          itemsPerPage={itemsPerPage}
-          paginate={paginate}
-        />
       </div>
-
+      {loading ? (
+        <Box textAlign="center" mb={4}>
+          <CircularProgress size={40} color="primary" />
+        </Box>
+      ) : (
+        <div className="container">
+          {list}
+          {pagination}
+        </div>
+      )}
       <AppBar
         color="primary"
-        sx={{ bottom: 0, top: "auto", position: "absolute" }}
+        sx={{ bottom: 0, top: "auto", position: "relative" }}
       >
         <Toolbar>
           <Typography variant="body1" color="inherit">
