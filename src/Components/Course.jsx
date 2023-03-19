@@ -105,7 +105,7 @@ function Course() {
       <div className="container">
         <Box mb={2}>
           <Typography variant="body2" color="text.secondary">
-            Все уроки:
+            All lessons:
           </Typography>
         </Box>
         <Grid container spacing={2}>
