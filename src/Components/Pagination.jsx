@@ -1,6 +1,16 @@
 import React from "react";
 
-function Pagination({ itemsPerPage, totalCard, paginate }) {
+interface PaginationProps {
+  itemsPerPage: number;
+  totalCard: number;
+  paginate: (pageNumber: number) => void;
+}
+
+function Pagination({
+  itemsPerPage,
+  totalCard,
+  paginate,
+}: PaginationProps): JSX.Element {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalCard / itemsPerPage); i++) {

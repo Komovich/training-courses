@@ -7,7 +7,24 @@ import { Typography, Badge, Rating, Chip, Box } from "@mui/material";
 import Video from "./Video";
 import { Link } from "react-router-dom";
 
-function CourseCard({ course }) {
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+  lessonsCount: number;
+  rating: number;
+  previewImageLink: string;
+  meta: {
+    courseVideoPreview: string,
+    skills: string[],
+  };
+}
+
+interface Props {
+  course: Course;
+}
+
+const CourseCard: React.FC<Props> = ({ course }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleMouseOver = () => {
@@ -58,7 +75,7 @@ function CourseCard({ course }) {
               <Box sx={{ position: "absolute", inset: 0 }}>
                 <Video
                   video={course.meta.courseVideoPreview}
-                  poster={course.previewImageLink + "/cover.webp"}
+                  poster={`${course.previewImageLink}/cover.webp`}
                 />
               </Box>
             ) : (
@@ -72,7 +89,7 @@ function CourseCard({ course }) {
               >
                 <CardMedia
                   sx={{ height: "100%", width: "100%", marginBottom: "1rem" }}
-                  image={course.previewImageLink + "/cover.webp"}
+                  image={`${course.previewImageLink}/cover.webp`}
                   title={course.title}
                 />
               </Box>
@@ -139,6 +156,6 @@ function CourseCard({ course }) {
       </Card>
     </Link>
   );
-}
+};
 
 export default CourseCard;

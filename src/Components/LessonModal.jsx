@@ -18,7 +18,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 const LessonModal = ({ lessonData, handleClose }) => {
-  const { title, order, duration, status, link, previewImageLink } = lessonData;
+  const { title, order, link } = lessonData;
 
   return (
     <Dialog
