@@ -17,7 +17,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({ title, handleClose }) => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography>{title}</Typography>
+          <Typography component="div">{title}</Typography>
           <IconButton
             edge="start"
             color="inherit"

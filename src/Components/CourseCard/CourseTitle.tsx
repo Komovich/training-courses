@@ -8,9 +8,9 @@ interface Props {
 const CourseTitle: React.FC<Props> = ({ title }) => {
   return (
     <Typography
+      component="div"
       gutterBottom
       variant="h6"
-      component="div"
       className="content__title"
       sx={{ marginBottom: "1rem" }}
     >

@@ -1,13 +1,9 @@
-import {
-  Dialog,
-  Box,
-  Grid,
-} from "@mui/material";
+import { Dialog, Box, Grid } from "@mui/material";
 import Slide, { SlideProps } from "@mui/material/Slide";
 import { forwardRef } from "react";
-import LessonVideo from "./LessonVideo"
-import CourseOrder from "./LessonOrder"
-import LessonHeader from "./LessonHeader"
+import LessonVideo from "./LessonVideo";
+import CourseOrder from "./LessonOrder";
+import LessonHeader from "./LessonHeader";
 
 interface TransitionProps extends Omit<SlideProps, "children"> {
   children: React.ReactElement<any, any>;
@@ -40,12 +36,16 @@ const LessonModal = ({ lessonData, handleClose }) => {
       onClose={handleClose}
       TransitionComponent={Transition}
     >
-      <LessonHeader title={title} handleClose={handleClose}/>
+      <LessonHeader title={title} handleClose={handleClose} />
       <Box mt={2}>
         <div className="container">
           <Grid container spacing={4}>
-            <LessonVideo link={link} lessonData={lessonData} videoStyle={videoStyle}/> 
-            <CourseOrder order={order} title={title}/>
+            <LessonVideo
+              link={link}
+              lessonData={lessonData}
+              videoStyle={videoStyle}
+            />
+            <CourseOrder order={order} title={title} />
           </Grid>
         </div>
       </Box>

@@ -8,22 +8,15 @@ interface CourseTitleProps {
 function CourseTitle({ title }: CourseTitleProps): JSX.Element {
   return (
     <Typography
-        gutterBottom
-        variant="h6"
-        component="div"
-        className="content__title"
-        sx={{ marginBottom: "1rem" }}
-      >
-        {title}
-      </Typography>
+      component="div"
+      gutterBottom
+      variant="h6"
+      className="content__title"
+      sx={{ marginBottom: "1rem" }}
+    >
+      {title}
+    </Typography>
   );
 }
 
 export default CourseTitle;
-
-
-
-
-
-
-

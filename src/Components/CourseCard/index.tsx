@@ -2,11 +2,11 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Box } from "@mui/material";
-import CourseMedia from "./CourseMedia"
-import CourseDescription from "./CourseDescription"
-import CourseSkills from "./CourseSkills"
-import CourseTitle from "./CourseTitle"
-import CourseRating from "./CourseRating"
+import CourseMedia from "./CourseMedia";
+import CourseDescription from "./CourseDescription";
+import CourseSkills from "./CourseSkills";
+import CourseTitle from "./CourseTitle";
+import CourseRating from "./CourseRating";
 import { Link } from "react-router-dom";
 
 interface Course {
@@ -15,9 +15,9 @@ interface Course {
   description: string;
   lessonsCount: number;
   rating: number;
-  previewImageLink: string;
+  previewImageLink: any;
   meta: {
-    courseVideoPreview: string;
+    courseVideoPreview: any;
     skills: string[];
   };
 }
@@ -27,7 +27,6 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-  
   return (
     <Link to={`/lesson/${course.id}`}>
       <Card
@@ -50,16 +49,22 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             alignItems: "center",
           }}
         >
-          <CourseTitle title={course.title}/>
-          <CourseMedia previewImageLink={course.previewImageLink} courseVideoPreview={course.meta.courseVideoPreview} />
+          <CourseTitle title={course.title} />
+          <CourseMedia
+            previewImageLink={course.previewImageLink}
+            courseVideoPreview={course.meta.courseVideoPreview}
+          />
         </Box>
 
         <CardContent sx={{ flexGrow: 1 }}>
-        <CourseDescription description={course.description}/>
-        <CourseSkills skills={course.meta.skills}/>
+          <CourseDescription description={course.description} />
+          <CourseSkills skills={course.meta.skills} />
         </CardContent>
 
-        <CourseRating lessonsCount={course.lessonsCount} rating={course.rating}/>
+        <CourseRating
+          lessonsCount={course.lessonsCount}
+          rating={course.rating}
+        />
       </Card>
     </Link>
   );

@@ -21,7 +21,7 @@ function CourseSkills({ skills }: CourseSkillsProps): JSX.Element {
           }}
         />
       ))}
-      </div>
+    </div>
   );
 }
 

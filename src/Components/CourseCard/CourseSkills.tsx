@@ -8,6 +8,7 @@ interface CourseSkillsProps {
 const CourseSkills: React.FC<CourseSkillsProps> = ({ skills }) => {
   return (
     <Typography
+      component="div"
       variant="body2"
       color="text.secondary"
       sx={{

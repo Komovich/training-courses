@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Video from "../Video/index"; // замените `Video` на свой компонент видео
 
 interface LessonVideoProps {
@@ -18,14 +18,14 @@ const LessonVideo: React.FC<LessonVideoProps> = ({
 }) => {
   return (
     <Grid item xs={8}>
-    <Box sx={{ position: "relative", paddingBottom: "54%" }}>
-      <Video
-        video={{ link }}
-        poster={`${lessonData.previewImageLink}/lesson-${lessonData.order}.webp`}
-        context="lesson"
-        style={videoStyle}
-      />
-    </Box>
+      <Box sx={{ position: "relative", paddingBottom: "54%" }}>
+        <Video
+          video={{ link }}
+          poster={`${lessonData.previewImageLink}/lesson-${lessonData.order}.webp`}
+          context="lesson"
+          style={videoStyle}
+        />
+      </Box>
     </Grid>
   );
 };

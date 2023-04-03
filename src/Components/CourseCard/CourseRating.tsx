@@ -6,7 +6,10 @@ interface CourseRatingProps {
   rating: number;
 }
 
-function CourseRating({ lessonsCount, rating }: CourseRatingProps): JSX.Element {
+function CourseRating({
+  lessonsCount,
+  rating,
+}: CourseRatingProps): JSX.Element {
   return (
     <CardActions>
       <Badge color="primary" sx={{ fontSize: "20px", marginRight: "100px" }}>

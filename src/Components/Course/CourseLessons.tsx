@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Lesson from "../Lesson";
 
 interface CourseLessonProps {
-  lessons: Lesson[];
+  lessons: any;
 }
 
 function CourseLessons({ lessons }: CourseLessonProps): JSX.Element {

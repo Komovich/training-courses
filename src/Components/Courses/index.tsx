@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import {AppBar, Box, CircularProgress} from "@mui/material";
+import { AppBar, Box, CircularProgress } from "@mui/material";
 import Pagination from "./Pagination";
-import Api from "../../api";  
+import Api from "../../api";
 import CourseCard from "../CourseCard";
 import CoursesTitle from "./CoursesTitle";
 import CoursesFooter from "./CoursesFooter";
 
 function Courses() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<any>([]); 
+  const [data, setData] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(10);
 
   async function getData() {
     try {
       setLoading(true);
-      const courses = await Api.getData();
-      setData(courses);
+      const resp = await Api.getData();
+      setData(resp.courses);
     } catch (error) {
       console.error(error);
     } finally {
@@ -31,6 +31,7 @@ function Courses() {
   const lastPageIndex: number = currentPage * itemsPerPage;
   const firstPageIndex: number = lastPageIndex - itemsPerPage;
   const renderedData: any[] = data.slice(firstPageIndex, lastPageIndex);
+  
 
   const paginate = (pageNumbers: number) => {
     setCurrentPage(pageNumbers);
@@ -61,7 +62,7 @@ function Courses() {
         elevation={4}
       />
       <div className="container">
-        <CoursesTitle />     
+        <CoursesTitle />
       </div>
       {loading ? (
         <Box textAlign="center" mb={4}>
@@ -72,7 +73,7 @@ function Courses() {
           {list}
           {pagination}
         </div>
-      )} 
+      )}
       <CoursesFooter />
     </div>
   );

@@ -17,7 +17,7 @@ class Api implements API {
       "http://localhost:3000/api/v1/auth/anonymous?platform=subscriptions",
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
     );
@@ -35,7 +35,7 @@ class Api implements API {
       {
         headers: {
           Authorization: `Bearer ${this.token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
     );
@@ -53,7 +53,7 @@ class Api implements API {
       {
         headers: {
           Authorization: `Bearer ${this.token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
     );
@@ -63,4 +63,3 @@ class Api implements API {
 }
 
 export default new Api();
-

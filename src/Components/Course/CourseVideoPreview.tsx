@@ -7,7 +7,10 @@ interface CourseVideoPreviewProps {
   poster: string;
 }
 
-function CourseVideoPreview({ video, poster }: CourseVideoPreviewProps): JSX.Element {
+function CourseVideoPreview({
+  video,
+  poster,
+}: CourseVideoPreviewProps): JSX.Element {
   return (
     <Box sx={{ width: "50%", margin: "0 auto" }}>
       <Box

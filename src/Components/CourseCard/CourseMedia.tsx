@@ -4,14 +4,16 @@ import Video from "../Video";
 import { Box } from "@mui/material";
 
 interface CourseMediaProps {
-  previewImageLink: string;
-  courseVideoPreview: string;
+  previewImageLink: any;
+  courseVideoPreview: any;
 }
 
 const CourseMedia: React.FC<CourseMediaProps> = ({
   previewImageLink,
-  courseVideoPreview
+  courseVideoPreview,
 }) => {
+  {console.log(courseVideoPreview, 12)}
+  
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleMouseOver = () => {
