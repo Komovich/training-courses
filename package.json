@@ -8,9 +8,10 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "http-proxy-middleware": "^2.0.6",
+    "msw": "^1.2.1",
+    "prettier": "^2.8.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.12.0",
@@ -44,6 +45,12 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.32.1",
+    "@testing-library/react": "^14.0.0",
     "typescript": "^5.0.2"
-  }
+  },
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}"
+  ],
+  "proxy": "http://api.wisey.app"
 }

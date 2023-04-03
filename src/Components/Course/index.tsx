@@ -1,132 +1,91 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Typography, Box, Chip, Grid } from "@mui/material";
-import Video from "../Video";
+import { AppBar, Box } from "@mui/material";
 import Api from "../../api";
 import { useParams } from "react-router";
 import Lesson from "../Lesson";
+import CourseVideoPreview from "./CourseVideoPreview";
+import CourseLessons from "./CourseLessons";
+import CourseTitle from "./CourseTitle";
+import CourseDescription from "./CourseDescription"
+import CourseFooter from "./CourseFooter"
+import CourseSkills from "./CourseSkills"
 
-function Course() {
-    const [course, setCourse] = useState(null);
-    let { id } = useParams();
+interface Course {
+id: number;
+title: string;
+description: string;
+previewImageLink: string;
+meta: {
+courseVideoPreview: string;
+skills?: string[];
+};
+lessons: Lesson[];
+}
 
-    async function getCourse(id) {
-        try {        
-            const data = await Api.getCourse(id);
-            console.log(data);
-            setCourse(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+interface Lesson {
+id: number;
+title: string;
+description: string;
+duration: number;
+status: string;
+previewImageLink: string;
+order: number;
+}
 
-    useEffect(() => {
-        if (!id) return;
-        getCourse(id);
-    }, [id]);
+function Course(): JSX.Element | null {
+const [course, setCourse] = useState<Course | null>(null);
+let { id } = useParams<{ id: string }>();
 
-    if (!course) return null;
+async function getCourse(id: string): Promise<void> {
+try {
+const data = await Api.getCourse(id);
+setCourse(data);
+} catch (error) {
+console.error(error);
+}
+}
 
-    return (
-        <Box
-            className="wrapper"
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "100vh",
-            }}
-        >
-            <AppBar
-                className="header"
-                position="static"
-                color="primary"
-                elevation={4}
-            ></AppBar>
+useEffect(() => {
+if (!id) return;
+getCourse(id);
+}, [id]);
 
-            <Box sx={{ width: "50%", margin: "0 auto" }}>
-                <Box
-                    sx={{
-                        position: "relative",
-                        justifyContent: "center",
-                        paddingBottom: "56%",
-                    }}
-                >
-                    <Video
-                        video={course.meta.courseVideoPreview}
-                        poster={course.previewImageLink + "/cover.webp"}
-                    />
-                </Box>
-            </Box>
+if (!course) return null;
 
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    marginBottom: "2rem",
-                }}
-            >
-                <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="div"
-                    className="content__title"
-                    sx={{ marginBottom: "1rem" }}
-                >
-                    {course.title}
-                </Typography>
-
-                {course.meta.skills?.map((skill, i) => (
-                    <Chip
-                        key={i}
-                        label={skill}
-                        sx={{
-                            backgroundColor: "#3483eb",
-                            color: "white",
-                            fontSize: "16px",
-                            fontWeight: "bold",
-                            margin: "5px",
-                        }}
-                    />
-                ))}
-
-                <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="div"
-                    className="content__title"
-                    sx={{ marginBottom: "50px" }}
-                >
-                    {course.description}
-                </Typography>
-            </Box>
-            <div className="container">
-                <Box mb={2}>
-                    <Typography variant="body2" color="text.secondary">
-                        All lessons:
-                    </Typography>
-                </Box>
-                <Grid container spacing={2}>
-                    {course.lessons.map((lesson) => (
-                        <Grid item xs={6} md={4} key={lesson.id}>
-                            <Lesson lesson={lesson} />
-                        </Grid>
-                    ))}
-                </Grid>
-            </div>
-            <AppBar
-                color="primary"
-                sx={{ top: "auto", bottom: 0, position: "fixed", width: "100%" }}
-            >
-                <Toolbar>
-                    <Typography variant="body1" color="inherit">
-                        © 2023 Gen.tech, Inc.
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-        </Box>
-    );
+return (
+<Box
+className="wrapper"
+sx={{
+display: "flex",
+flexDirection: "column",
+alignItems: "center",
+justifyContent: "center",
+minHeight: "100vh",
+}}
+>
+<AppBar
+     className="header"
+     position="static"
+     color="primary"
+     elevation={4}
+   ></AppBar>
+  <CourseVideoPreview video={course.meta.courseVideoPreview} poster={course.previewImageLink + "/cover.webp"}/>
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+      marginBottom: "2rem",
+    }}
+  >
+    <CourseTitle title={course.title} />
+    <CourseSkills skills={course.meta.skills}/>
+    <CourseDescription description={course.description}/>
+  </Box>
+   <CourseLessons lessons={course.lessons} />
+   <CourseFooter />
+  </Box>
+  );
 }
 export default Course;
