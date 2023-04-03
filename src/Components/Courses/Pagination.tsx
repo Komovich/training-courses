@@ -16,11 +16,12 @@ function Pagination({
   for (let i = 1; i <= Math.ceil(totalCard / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
-
+  {console.log(pageNumbers, 13)}
   return (
     <div className="pagination">
       <ul className="pagination__inner">
-        {pageNumbers.map((number) => (
+        
+          {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <button onClick={() => paginate(number)}>{number}</button>
           </li>

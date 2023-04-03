@@ -11,7 +11,6 @@ const CourseMedia: React.FC<CourseMediaProps> = ({
   previewImageLink,
   courseVideoPreview,
 }) => {
-  console.log(courseVideoPreview, 12);
 
   const [isPlaying, setIsPlaying] = useState(false);
 

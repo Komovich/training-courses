@@ -22,7 +22,7 @@ const CourseSkills: React.FC<CourseSkillsProps> = ({ skills }) => {
       }}
     >
       Learning Outcomes:
-      {skills.map((skill, i) => (
+      {skills && skills.map((skill, i) => (
         <Chip
           key={i}
           label={skill}
