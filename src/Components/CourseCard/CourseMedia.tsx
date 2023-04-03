@@ -1,7 +1,6 @@
 import { useState } from "react";
-import CardMedia from "@mui/material/CardMedia";
 import Video from "../Video";
-import { Box } from "@mui/material";
+import { Card } from "@mui/material";
 
 interface CourseMediaProps {
   previewImageLink: any;
@@ -12,8 +11,8 @@ const CourseMedia: React.FC<CourseMediaProps> = ({
   previewImageLink,
   courseVideoPreview,
 }) => {
-  {console.log(courseVideoPreview, 12)}
-  
+  console.log(courseVideoPreview, 12);
+
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleMouseOver = () => {
@@ -25,34 +24,35 @@ const CourseMedia: React.FC<CourseMediaProps> = ({
   };
 
   return (
-    <Box
+    <Card
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      sx={{ paddingBottom: "64%", position: "relative" }}
+      sx={{
+        paddingBottom: "64%",
+        position: "relative",
+        height: "100%",
+        width: "100%",
+      }}
     >
       {isPlaying ? (
-        <Box sx={{ position: "absolute", inset: 0 }}>
-          <Video
-            video={courseVideoPreview}
-            poster={`${previewImageLink}/cover.webp`}
-          />
-        </Box>
+        <Video
+          video={courseVideoPreview}
+          poster={`${previewImageLink}/cover.webp`}
+          style={{ position: "absolute", inset: 0 }}
+        />
       ) : (
-        <Box
-          sx={{
+        <img
+          src={`${previewImageLink}/cover.webp`}
+          alt="Preview"
+          style={{
             position: "absolute",
             height: "100%",
             width: "100%",
             inset: 0,
           }}
-        >
-          <CardMedia
-            sx={{ height: "100%", width: "100%", marginBottom: "1rem" }}
-            image={`${previewImageLink}/cover.webp`}
-          />
-        </Box>
+        />
       )}
-    </Box>
+    </Card>
   );
 };
 
