@@ -3,8 +3,8 @@ import Video from "../Video";
 import { Card } from "@mui/material";
 
 interface CourseMediaProps {
-  previewImageLink: any;
-  courseVideoPreview: any;
+  previewImageLink: string;
+  courseVideoPreview: string;
 }
 
 const CourseMedia: React.FC<CourseMediaProps> = ({
